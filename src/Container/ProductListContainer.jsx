@@ -1,5 +1,5 @@
 import React from "react";
-import data from "./data.json";
+import data from "../Components/data.json";
 import "./ProductListContainer.css";
 
 function ProductListContainer() {

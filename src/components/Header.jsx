@@ -1,5 +1,7 @@
 import React from "react";
 import "./Header.css";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons";
 
 function Header() {
   return (
@@ -15,7 +17,10 @@ function Header() {
 
         <div className="navbar-links">
           <input type="text" placeholder="Search.." />
-          <a>Cart</a> 
+          <div className="search-icon">
+            <FontAwesomeIcon icon={faMagnifyingGlass} className="icon-color" />
+          </div>
+          <a>Cart</a>
           <a>Wishlist</a>
           <a>Account</a>
         </div>
