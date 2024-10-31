@@ -1,12 +1,16 @@
+import { BrowserRouter } from "react-router-dom";
 import "./App.css";
-import Header from "./components/Header";
-import ProductListContainer from "./Container/ProductListContainer";
+import PrivateRoute from "./Routes/PrivateRoute";
+import PublicRoute from "./Routes/PublicRoute";
+const isLoggedIn = localStorage.getItem('token')
 
 function App() {
   return (
     <>
-      <Header />
-      <ProductListContainer />
+      <BrowserRouter> 
+      {isLoggedIn ? <PrivateRoute /> : <PublicRoute />}
+      {/* {isLoggedIn ? "Authorized" : "Please login first"} */}
+        </BrowserRouter>
     </>
   );
 }

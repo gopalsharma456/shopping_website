@@ -1,8 +1,27 @@
-import React from "react";
-import data from "../Components/data.json";
+import React, { useEffect, useState } from "react";
 import "./ProductListContainer.css";
+import axios from "axios";
+import data from '../../public/images/data.json'
 
 function ProductListContainer() {
+
+  const [data, setData] = useState([]);
+
+  const fetchApi = async () => {
+    try {
+      let res = await axios.get("https://api.escuelajs.co/api/v1/products");
+      setData(res.data);
+      console.log(res.data);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  useEffect(() =>{
+    fetchApi()
+  }, [])
+
+
   return (
     <>
       <div className="product-row">
@@ -11,7 +30,7 @@ function ProductListContainer() {
             return (
               <div className="card-container" key={`${values.title} ${index}`}>
                 <img
-                  src={values.category.image || values.images}
+                  src={values?.images[0] || data.image}
                   className="card-img-top"
                   alt="Product Name"
                 />

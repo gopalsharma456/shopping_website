@@ -18,15 +18,21 @@
   /* border: 1px solid black; */
 }
 
-.card-container:hover{
+.card-container:hover {
   box-shadow: 0 3px 16px rgba(0, 0, 0, 0.11);
   transition: 0.3s ease-in-out;
-  .card-description{
+  /* .card-description{
     padding: 10px;
     position: relative;
     bottom: 20px;
-    /* transition: 0.8s ease-in; */
-  }
+    transition: 0.8s ease-in;
+  } */
+}
+
+.card-title {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .card-img-top {
@@ -35,9 +41,14 @@
 
 .card-description {
   padding: 10px;
-   
 }
 
+.btn-group {
+  margin-top: 10px;
+  :first-child {
+    margin-bottom: 5px;
+  }
+}
 
 .price-tag {
   font-size: small;

@@ -1,9 +1,14 @@
-import React from 'react'
+// src/pages/Wishlist.js
+import React from 'react';
+import Navbar from '../Components/Header';
 
-function WishList() {
+const Wishlist = () => {
   return (
-    <div>WishList</div>
-  )
-}
+    <div>
+      <h2>Your Wishlist</h2>
+      {/* Wishlist items would be displayed here */}
+    </div>
+  );
+};
 
-export default WishList
+export default Wishlist;

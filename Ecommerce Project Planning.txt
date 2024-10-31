@@ -1,24 +1,15 @@
-UI
-Data fetching using API 
-cart & wishlist function
-redux implementation
-User Authentication
-category implementation
-search function with debouncing
+.Folder Structure
+.basic Redux Setup
 
-
-Folder Structure
-basic Redux Setup
-
-Login UI
+.Login UI
 Login Validation
 Login store token in Localstorage
 
-Signup UI
+.Signup UI
 Signup Validation
 
-Home UI
-List of Products
+.Home UI
+.List of Products
 List of Categories
 
 Product Pagination
@@ -28,8 +19,8 @@ Product Detail UI
 Product -> add to cart
 Product -> add to wishlist
 
-Cart UI
-Cart List
+.Cart UI
+.Cart List
 Add Quantity 
 Decrease Quantity
 
@@ -38,3 +29,12 @@ Wishlist Ui
 Wishlist
 
 buy now on cart flow
+
+
+UI
+.Data fetching using API 
+cart & wishlist function
+redux implementation
+User Authentication
+category implementation
+search function with debouncing
