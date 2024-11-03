@@ -6,6 +6,7 @@ import { API_ENDPOINTS } from "../shared/constants";
 import { useDispatch } from "react-redux";
 import { addToCart } from "../Store/cart/cartActions";
 import { addToWishList } from "../Store/wishlist/wishListAction";
+import { toast } from "react-toastify";
 
 function ProductListContainer(props) {
   const [data, setData] = useState([]);
@@ -17,10 +18,12 @@ function ProductListContainer(props) {
 
   const addToCartFromCartActions = (item) => {
     dispatch(addToCart(item));
+    toast.success('Item added to cart successfully!')
   };
-
+  
   const addToWishlistFromActions = (item) => {
     dispatch(addToWishList(item));
+    toast.success('Item added to Wishlist successfully!')
   };
 
   const fetchApi = async () => {
