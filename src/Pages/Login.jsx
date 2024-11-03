@@ -1,6 +1,9 @@
 import axios from "axios";
 import React, { useState } from "react";
 import { Link , useNavigate} from "react-router-dom";
+import './Login.css'
+import { API_ENDPOINTS } from "../shared/constants";
+
 
 function Login() {
   const [email, setEmail] = useState();
@@ -15,7 +18,7 @@ function Login() {
     };
 
     axios
-      .post("https://api.escuelajs.co/api/v1/auth/login", payload)
+      .post(API_ENDPOINTS.loginApi, payload)
       .then((res) => {
         localStorage.setItem("token", JSON.stringify(res.data.access_token));
         window.dispatchEvent(new Event("tokenUpdated"));
@@ -28,9 +31,6 @@ function Login() {
       });
   }
 
-
-
-
   return (
     <div className="container">
       <h1>Login</h1>
@@ -41,6 +41,7 @@ function Login() {
           name="email"
           className="input-style"
           placeholder="Enter Your Email ID..."
+          autoComplete=""
         />
         <input
           onChange={(e) => setPassword(e.target.value)}

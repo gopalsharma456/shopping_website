@@ -11,6 +11,8 @@ export function* cartAddSagas(){
   yield takeLatest("SAGA_ADD_TO_CART", addToCartSaga)
 }
 
+
+
 function* deleteFromCartSaga(payload){
   yield put({
     type: "DELETE_FROM_CART",

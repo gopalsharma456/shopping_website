@@ -1,11 +1,11 @@
 // src/pages/Cart.js
 import React from "react";
-// import Navbar from "../components/Navbar";
 import { bindActionCreators } from "redux";
 import { connect } from "react-redux";
-import Header from "../Components/Header";
 // import { nanoid } from "nanoid/non-secure";
 // import { removeFromCart } from "../store/actions/cartAction";
+import './Cart.css'
+
 
 const Cart = (props) => {
   let {cart, removeFromCart} = props;

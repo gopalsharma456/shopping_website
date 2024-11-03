@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import "./UserProfile.css";
 import axios from "axios";
 import { useNavigate } from "react-router";
+import { API_ENDPOINTS } from "../shared/constants";
 
 function UserProfile() {
   const [userData, setUserData] = useState();
@@ -21,7 +22,7 @@ function UserProfile() {
     };
 
     const response = axios
-      .get("https://api.escuelajs.co/api/v1/auth/profile", header)
+      .get(API_ENDPOINTS.userProfileApi, header)
       .then((res) => {
         console.log("profile data", res);
         setUserData(res.data);
@@ -46,7 +47,7 @@ function UserProfile() {
       ></link>
 
       <div className="card">
-        <img src="img.jpg" alt="John" />
+        <img src={userData?.avatar} className="avatar" alt="John" />
         <h1>Hello {userData ? userData.name : "User"}</h1>
         <p className="title">{userData ? userData.role : ""}</p>
         <a href="#">

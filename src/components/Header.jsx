@@ -7,9 +7,14 @@ import {
   faUser,
 } from "@fortawesome/free-solid-svg-icons";
 import { Link } from "react-router-dom";
+import { useSelector } from "react-redux";
 
 function Header() {
   const [isLoggedIn, setIsLoggedIn] = useState(!!localStorage.getItem("token"));
+  const cartState = useSelector((state) => state.cartKey.cart.length);
+  const wishlistState = useSelector((state) => {
+    return state.wishlistKey.wishlistKey.length;
+  });
 
   useEffect(() => {
     function handleStorage() {
@@ -23,27 +28,31 @@ function Header() {
     };
   }, []);
 
-
   return (
     <>
       <nav className="navbar">
-        <div className="navbar-brand">
+        <div className="logo">
+          <Link to="/">Shop-Inn</Link>
+        </div>
+
+        {/* <div className="navbar-brand">
           <a>Men</a>
           <a>Women</a>
           <a>Kids</a>
-        </div>
-
-        <div className="logo">
-          <Link to="/">Logo</Link>
-        </div>
+        </div> */}
 
         <div className="navbar-links">
           <input type="text" placeholder="Search.." name="search" />
           <div className="search-icon">
             <FontAwesomeIcon icon={faMagnifyingGlass} className="icon-color" />
           </div>
-          <Link to="/cart">Cart</Link>
-          <Link to="/wishlist">Wishlist</Link>
+
+          {isLoggedIn && (
+            <>
+              <Link to="/cart">Cart({cartState})</Link>
+              <Link to="/wishlist">Wishlist({wishlistState})</Link>
+            </>
+          )}
 
           {!isLoggedIn ? (
             <Link to="/login">Login</Link>

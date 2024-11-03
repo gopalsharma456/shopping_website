@@ -33,4 +33,4 @@ const sagaDeleteFromCart = (payload) => {
 };
 
 
-export default {addToCart, sagaAddToCart, deleteFromCart, sagaDeleteFromCart}
+export {addToCart, sagaAddToCart, deleteFromCart, sagaDeleteFromCart}
