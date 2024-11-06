@@ -10,4 +10,13 @@ const productData = async (pagination) => {
   }
 }
 
-export {productData}
+const searchProduct = async (query) =>{
+  try {
+    const response = await axios.get(API_ENDPOINTS.searchProductsApi+query)
+    return response.data
+  } catch (error) {
+    console.log(error)
+  }
+}
+
+export {productData, searchProduct}

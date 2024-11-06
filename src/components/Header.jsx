@@ -8,9 +8,13 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
+import axios from "axios";
 
 function Header() {
   const [isLoggedIn, setIsLoggedIn] = useState(!!localStorage.getItem("token"));
+  const [searchTerm, setSearchTerm] = useState("");
+  const [searchResult, setSearchResult] = useState([]);
+
   const cartState = useSelector((state) => state.cartKey.cart.length);
   const wishlistState = useSelector((state) => {
     return state.wishlistKey.wishlistKey.length;
@@ -28,6 +32,28 @@ function Header() {
     };
   }, []);
 
+  useEffect(() => {
+    const debouncingFn = setTimeout(() => {
+      if (searchTerm) {
+        handleSearch(searchTerm)
+        console.log(searchResult)
+      } else {
+      }
+    }, 1000);
+    return () => clearTimeout(debouncingFn);
+  }, [searchTerm]);
+
+  const handleSearch = async (query) => {
+    try {
+      const response = await axios.get(
+        `https://api.escuelajs.co/api/v1/products/?title=${query}`
+      );
+      setSearchResult(response.data);
+    } catch (error) {
+      console.log("Error fetching result", error);
+    }
+  };
+
   return (
     <>
       <nav className="navbar">
@@ -42,7 +68,12 @@ function Header() {
         </div> */}
 
         <div className="navbar-links">
-          <input type="text" placeholder="Search.." name="search" />
+          <input
+            type="text"
+            placeholder="Search.."
+            name="search"
+            onChange={(e) => setSearchTerm(e.target.value)}
+          />
           <div className="search-icon">
             <FontAwesomeIcon icon={faMagnifyingGlass} className="icon-color" />
           </div>
